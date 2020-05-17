@@ -10,7 +10,7 @@ export default async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if(!authHeader){
-    return res.status(401).json({ error: 'Token not provided' })
+    return res.status(401).json({ error: 'Token not provided' });
   }
 
   //Quando coloca uma virgula na desestruturacao, o primeiro valor do array e descartado
@@ -20,8 +20,6 @@ export default async (req, res, next) => {
     //Coloca no param do Promisify a funcao que quer usar o async await
     //no primeiro () vai a funcao a ser alterada, no segundo os params da funcao alterada
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
-
-    console.log(decoded);
 
     //Esse ID sera utilizado para modificar o usuario
     req.userId = decoded.id;
