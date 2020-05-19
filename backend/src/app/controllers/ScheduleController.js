@@ -31,7 +31,7 @@ class ScheduleController {
           ],
         }
       },
-      order: ['date']
+      order: ['date'],
     });
 
     return res.json(appointments);
