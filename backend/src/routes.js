@@ -6,6 +6,7 @@ import FileController from './app/controllers/FileController'
 import ProviderController from './app/controllers/ProviderController'
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 //Importa o middleware de autenticacao
 import authMiddleware from './app/middleware/auth'
 //Importa lib para upload
@@ -47,7 +48,16 @@ routes.post('/appointments', AppointmentController.store);
 //Appointments, Retorna Todos os Agendamentos
 routes.get('/appointments', AppointmentController.index);
 
+//Appointments, Apaga o agendamento
+routes.delete('/appointments/:id', AppointmentController.delete);
+
 //Mostra agendamentos por providers
 routes.get('/schedules', ScheduleController.index);
+
+//Mostra notificacoes do usuario
+routes.get('/notifications', NotificationController.index);
+
+//Atualiza o visualizado pra true
+routes.put('/notifications/:id', NotificationController.update);
 
 export default routes;
